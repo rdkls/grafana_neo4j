@@ -20,8 +20,10 @@ run	pip install --install-option="--prefix=/var/lib/graphite" --install-option="
 
 # grafana
 run     cd ~ &&\
-	wget https://grafanarel.s3.amazonaws.com/builds/grafana_3.0.1_amd64.deb &&\
-        dpkg -i grafana_3.0.1_amd64.deb && rm grafana_3.0.1_amd64.deb
+       wget https://grafanarel.s3.amazonaws.com/builds/grafana_3.1.0-1466666977beta1_amd64.deb &&\
+        dpkg -i grafana_3.1.0-1466666977beta1_amd64.deb && rm grafana_3.1.0-1466666977beta1_amd64.deb
+      # wget https://grafanarel.s3.amazonaws.com/builds/grafana_3.0.4-1464167696_amd64.deb &&\
+      #  dpkg -i grafana_3.0.4-1464167696_amd64.deb && rm grafana_3.0.4-1464167696_amd64.deb
 
 # statsd
 add	./statsd/config.js /src/statsd/config.js
