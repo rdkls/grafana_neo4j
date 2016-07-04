@@ -25,24 +25,16 @@ accessible from anywhere if the host firewall is unconfigured.
 
 All data is stored in the /data folder in the container (graphite metrics and grafana db)
 
-
-    docker run -v /data/graphite:/data \
+    docker run -it -v /data/graphite:/data \
                -e SECRET_KEY='random-secret-key' \
-               -p 80:80 \
-               -p 3000:3000 \
-               -p 2003:2003 \
-               -p 2004:2004 \
-               -p 7002:7002 \
-               -p 8125:8125/udp \
-               -p 8126:8126 \
-               -d samsaffron/graphite
+               -p 3000:3000 -p 2003:2003 iborojevic/graphite-grafana
 
 ### Technical details
 
 By default, this instance of carbon-cache uses the following retention periods
 resulting in whisper files of approximately 2.5MiB.
 
-    10s:8d,1m:31d,10m:1y,1h:5y
+    1m:8d,10m:31d,1h:1y,1h:5y
 
 ### Based off
 
