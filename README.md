@@ -44,13 +44,8 @@ resulting in whisper files of approximately 2.5MiB.
 
     10s:8d,1m:31d,10m:1y,1h:5y
 
-### Getting started
-
-Generate your SECRET_KEY from [here](http://www.miniwebtool.com/django-secret-key-generator/). It is optional but highly recommended.
-
-
 ### Based off
 
-https://github.com/nickstenning/dockerfiles.git
+https://github.com/SamSaffron/graphite_docker
 
-Extended by Sam Saffron
+
