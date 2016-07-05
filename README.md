@@ -1,4 +1,4 @@
-## Graphite + Carbon + Statsd + Grafana
+## Graphite + Carbon + Statsd + Grafana + Neo4j templates
 
 An all-in-one image running graphite and carbon-cache.
 
@@ -27,7 +27,7 @@ All data is stored in the /data folder in the container (graphite metrics and gr
 
     docker run -it -v /data/graphite:/data \
                -e SECRET_KEY='random-secret-key' \
-               -p 3000:3000 -p 2003:2003 iborojevic/graphite-grafana
+               -p 3000:3000 -p 2003:2003 iborojevic/grafana-neo4j
 
 ### Technical details
 
