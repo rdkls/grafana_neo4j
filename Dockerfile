@@ -1,10 +1,8 @@
 from	ubuntu:14.04
 run	echo 'deb http://us.archive.ubuntu.com/ubuntu/ trusty universe' >> /etc/apt/sources.list
 run	apt-get -y update
-
 run	apt-get -y install software-properties-common &&\
 	apt-get -y update
-
 run     apt-get -y install nodejs python-django-tagging python-simplejson python-memcache \
 			    python-ldap python-cairo python-django python-twisted   \
 			    python-pysqlite2 python-support python-pip gunicorn     \
@@ -22,8 +20,6 @@ run	pip install --install-option="--prefix=/var/lib/graphite" --install-option="
 run     cd ~ &&\
        wget https://grafanarel.s3.amazonaws.com/builds/grafana_3.1.0-1466666977beta1_amd64.deb &&\
         dpkg -i grafana_3.1.0-1466666977beta1_amd64.deb && rm grafana_3.1.0-1466666977beta1_amd64.deb
-      # wget https://grafanarel.s3.amazonaws.com/builds/grafana_3.0.4-1464167696_amd64.deb &&\
-      #  dpkg -i grafana_3.0.4-1464167696_amd64.deb && rm grafana_3.0.4-1464167696_amd64.deb
 
 # statsd
 add	./statsd/config.js /src/statsd/config.js
@@ -34,8 +30,9 @@ add	./graphite/local_settings.py /var/lib/graphite/webapp/graphite/local_setting
 add	./graphite/carbon.conf /var/lib/graphite/conf/carbon.conf
 add	./graphite/storage-schemas.conf /var/lib/graphite/conf/storage-schemas.conf
 add	./graphite/storage-aggregation.conf /var/lib/graphite/conf/storage-aggregation.conf
-
 add     ./grafana/config.ini /etc/grafana/config.ini
+add	./neo4j/neo4j-dashboard.json /etc/grafana/neo4j-dashboard.json
+add	./neo4j/grafana-neo4j-datasource.json /etc/grafana/grafana-neo4j-datasource.json
 
 # Add system service config
 add	./nginx/nginx.conf /etc/nginx/nginx.conf
