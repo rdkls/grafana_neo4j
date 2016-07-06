@@ -30,6 +30,8 @@ add	./graphite/local_settings.py /var/lib/graphite/webapp/graphite/local_setting
 add	./graphite/carbon.conf /var/lib/graphite/conf/carbon.conf
 add	./graphite/storage-schemas.conf /var/lib/graphite/conf/storage-schemas.conf
 add	./graphite/storage-aggregation.conf /var/lib/graphite/conf/storage-aggregation.conf
+
+# Add grafana config
 add     ./grafana/config.ini /etc/grafana/config.ini
 add	./neo4j/neo4j-dashboard.json /etc/grafana/neo4j-dashboard.json
 add	./neo4j/grafana-neo4j-datasource.json /etc/grafana/grafana-neo4j-datasource.json
@@ -60,5 +62,4 @@ expose	8126
 
 add ./bin/init /usr/bin/init
 
-cmd /usr/bin/init
-
+entrypoint ["/usr/bin/init"]

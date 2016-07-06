@@ -17,9 +17,9 @@ rm -fr /data/graphite/*.pid
 
 mkdir -p /data/log/supervisor
 
-exec /usr/bin/supervisord &
+exec /usr/bin/supervisord > /tmp/output.log &
 sleep 5
 curl -i -X POST -H "Content-Type:application/json" http://admin:admin@localhost:3000/api/datasources -d @/etc/grafana/grafana-neo4j-datasource.json 
 curl -i -X POST -H "Content-Type:application/json" http://admin:admin@localhost:3000/api/dashboards/db -d @/etc/grafana/neo4j-dashboard.json 
 
-
+tail -f /tmp/output.log

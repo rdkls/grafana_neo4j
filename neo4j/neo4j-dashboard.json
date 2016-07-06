@@ -89,7 +89,7 @@
               "logBase": 1,
               "max": null,
               "min": null,
-              "show": true
+              "show": false
             }
           ]
         },
@@ -122,7 +122,7 @@
           "nullPointMode": "null",
           "percentage": false,
           "pointradius": 3,
-          "points": true,
+          "points": false,
           "renderer": "flot",
           "seriesOverrides": [],
           "span": 4,
@@ -161,7 +161,7 @@
               "logBase": 1,
               "max": null,
               "min": null,
-              "show": true
+              "show": false
             }
           ]
         },
@@ -559,7 +559,8 @@
           "targets": [
             {
               "refId": "A",
-              "target": "*.neo4j.cypher.replan_events"
+              "target": "aliasByNode(scaleToSeconds(nonNegativeDerivative(*.neo4j.cypher.replan_events),1),0)",
+              "textEditor": true
             }
           ],
           "timeFrom": null,
@@ -633,7 +634,7 @@
             {
               "refId": "A",
               "target": "groupByNode(*.vm.memory.pool.*, 0, 'sum')",
-              "textEditor": false
+              "textEditor": true
             }
           ],
           "timeFrom": null,
@@ -723,7 +724,7 @@
           ],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Throughput (tx/sec)",
+          "title": "Committed Tx Throughput (tx/sec)",
           "tooltip": {
             "msResolution": false,
             "shared": true,
@@ -883,7 +884,7 @@
           "links": [],
           "nullPointMode": "null",
           "percentage": false,
-          "pointradius": 5,
+          "pointradius": 2,
           "points": true,
           "renderer": "flot",
           "seriesOverrides": [
@@ -978,27 +979,19 @@
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
-          "seriesOverrides": [
-            {
-              "alias": "/events/",
-              "bars": true,
-              "points": false,
-              "yaxis": 2,
-              "zindex": -3
-            }
-          ],
+          "seriesOverrides": [],
           "span": 4,
           "stack": false,
           "steppedLine": false,
           "targets": [
             {
-              "target": "aliasByNode(*.vm.thread.count, 0)",
               "refId": "A",
+              "target": "aliasByNode(*.vm.thread.count, 0)",
               "textEditor": true
             },
             {
-              "target": "aliasByNode(*.vm.thread.total, 0)",
               "refId": "B",
+              "target": "aliasByNode(*.vm.thread.total, 0)",
               "textEditor": true
             }
           ],
@@ -1026,97 +1019,7 @@
             },
             {
               "format": "short",
-              "label": "Total events (if more than 1)",
-              "logBase": 1,
-              "max": null,
-              "min": 0,
-              "show": false
-            }
-          ]
-        },
-        {
-          "aliasColors": {},
-          "bars": true,
-          "datasource": "neo4j",
-          "editable": true,
-          "error": false,
-          "fill": 1,
-          "grid": {
-            "threshold1": null,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2": null,
-            "threshold2Color": "rgba(234, 112, 112, 0.22)"
-          },
-          "id": 44,
-          "legend": {
-            "alignAsTable": false,
-            "avg": false,
-            "current": false,
-            "hideEmpty": true,
-            "max": false,
-            "min": false,
-            "rightSide": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "null",
-          "percentage": false,
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [
-            {
-              "alias": "/events/",
-              "bars": true,
-              "points": false,
-              "yaxis": 2,
-              "zindex": -3
-            }
-          ],
-          "span": 4,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "target": "aliasByNode(*.neo4j.server.threads.jetty.all, 0)",
-              "refId": "A",
-              "textEditor": true
-            },
-            {
-              "target": "aliasByNode(*.neo4j.server.threads.jetty.idle, 0)",
-              "refId": "B",
-              "textEditor": true
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Jetty (server) threads",
-          "tooltip": {
-            "msResolution": false,
-            "shared": true,
-            "sort": 0,
-            "value_type": "cumulative"
-          },
-          "type": "graph",
-          "xaxis": {
-            "show": true
-          },
-          "yaxes": [
-            {
-              "format": "none",
-              "label": "Total threads",
-              "logBase": 1,
-              "max": null,
-              "min": 0,
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": "Total events (if more than 1)",
+              "label": "",
               "logBase": 1,
               "max": null,
               "min": 0,
@@ -1419,83 +1322,6 @@
               "logBase": 1,
               "max": null,
               "min": 0,
-              "show": true
-            },
-            {
-              "format": "short",
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ]
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "datasource": "neo4j",
-          "editable": true,
-          "error": false,
-          "fill": 6,
-          "grid": {
-            "threshold1": null,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2": null,
-            "threshold2Color": "rgba(234, 112, 112, 0.22)"
-          },
-          "id": 13,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "null as zero",
-          "percentage": false,
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "span": 4,
-          "stack": true,
-          "steppedLine": false,
-          "targets": [
-            {
-              "target": "aliasByNode(*.neo4j.transaction.active_read,0)",
-              "refId": "B",
-              "textEditor": true
-            },
-            {
-              "target": "aliasByNode(*.neo4j.transaction.active_write,0)",
-              "refId": "C",
-              "textEditor": true
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Active transactions",
-          "tooltip": {
-            "msResolution": false,
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "show": true
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             },
             {
@@ -1832,13 +1658,13 @@
           "steppedLine": false,
           "targets": [
             {
-              "target": "aliasByNode(*.neo4j.transaction.committed_read,0)",
               "refId": "B",
+              "target": "aliasByNode(*.neo4j.transaction.committed_read,0)",
               "textEditor": true
             },
             {
-              "target": "aliasByNode(*.neo4j.transaction.committed_write,0)",
               "refId": "C",
+              "target": "aliasByNode(*.neo4j.transaction.committed_write,0)",
               "textEditor": true
             }
           ],
@@ -1909,96 +1735,14 @@
           "steppedLine": false,
           "targets": [
             {
-              "target": "aliasByNode(*.neo4j.transaction.rollback_read,0)",
               "refId": "B",
-              "textEditor": true
-            },
-            {
-              "target": "aliasByNode(*.neo4j.transaction.rollback_write,0)",
-              "refId": "C",
+              "target": "aliasByNode(*.neo4j.transaction.rollbacks,0)",
               "textEditor": true
             }
           ],
           "timeFrom": null,
           "timeShift": null,
           "title": "Rollback transactions",
-          "tooltip": {
-            "msResolution": false,
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "show": true
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "short",
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ]
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "datasource": "neo4j",
-          "editable": true,
-          "error": false,
-          "fill": 6,
-          "grid": {
-            "threshold1": null,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2": null,
-            "threshold2Color": "rgba(234, 112, 112, 0.22)"
-          },
-          "id": 43,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "null as zero",
-          "percentage": false,
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "span": 4,
-          "stack": true,
-          "steppedLine": false,
-          "targets": [
-            {
-              "target": "aliasByNode(*.neo4j.transaction.terminated_read,0)",
-              "refId": "B",
-              "textEditor": true
-            },
-            {
-              "target": "aliasByNode(*.neo4j.transaction.terminated_write,0)",
-              "refId": "C",
-              "textEditor": true
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Terminated transactions",
           "tooltip": {
             "msResolution": false,
             "shared": true,
@@ -2039,7 +1783,7 @@
     }
   ],
   "time": {
-    "from": "now/d",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {
@@ -2079,7 +1823,7 @@
   },
   "refresh": false,
   "schemaVersion": 12,
-  "version": 14,
+  "version": 6,
   "links": [],
   "gnetId": null
 }
