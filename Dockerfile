@@ -8,6 +8,8 @@ run     apt-get -y install nodejs python-django-tagging python-simplejson python
 			    python-pysqlite2 python-support python-pip gunicorn     \
 			    supervisor nginx-light nodejs git wget curl
 
+run     apt-get -y install python-dev libffi-dev
+
 # Install statsd
 run	mkdir /src && git clone https://github.com/etsy/statsd.git /src/statsd
 
